@@ -22,12 +22,12 @@ namespace math {
 	}
 
 	// Est. ~6 cycles
-	template <typename T> constexpr T abs(const T &a) {
-		// T temp = a >> abs_helper_getoffset();
-		// a ^= temp;
-		// a += temp & 1;
-		// or a -= temp;
+	template <typename T> requires std::is_signed<T>::value constexpr T abs(const T &a) {
 		return ((a >> _abs_helper_getoffset<T>()) | 1) * a;
+	}
+
+	template <typename T> requires std::is_unsigned<T>::value constexpr T abs(const T &a) {
+		return a;
 	}
 }
 

@@ -14,8 +14,8 @@ public:
 
 	bool intersects(const rect<T> &other) const {
 		return
-			this->size.x + other.size.x >= math::abs<T>((other.pos.x * 2 + other.size.x) - (this->pos.x * 2 + this->size.x)) &&
-			this->size.y + other.size.y >= math::abs<T>((other.pos.y * 2 + other.size.y) - (this->pos.y * 2 + this->size.y))
+			this->size.x + other.size.x >= math::abs<T>((other.pos.x - this->pos.x) * 2 + (other.size.x - this->size.x)) &&
+			this->size.y + other.size.y >= math::abs<T>((other.pos.y - this->pos.y) * 2 + (other.size.y - this->size.y))
 		;
 	}
 };
